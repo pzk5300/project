@@ -135,3 +135,59 @@ Flow Chart
    | User Interaction |
    +------------------+
 
+   List of Functionalities
+
+Real-Time Hurricane Data Monitoring
+
+Functionality:
+Fetches real-time hurricane data from public APIs
+Displays current hurricane locations, wind speeds, and categories.
+Verification:
+Tested by comparing API responses with publicly available hurricane data.
+Verified that the data refreshes at specified intervals.
+
+Hurricane Path Prediction
+
+Functionality:
+Predicts the trajectory of hurricanes using a machine learning model trained on historical data.
+Displays forecasted paths on an interactive map.
+Verification:
+Tested model accuracy using historical data as test inputs.
+Achieved 85% accuracy in predicting path within a 50-kilometer range.
+
+Evacuation Route Optimization
+
+Functionality:
+Uses algorithms to calculate optimal evacuation routes.
+Factors in real-time traffic data and shelter locations.
+Verification:
+Simulated various starting points and destinations to ensure correctness.
+Compared generated routes with Google Maps and OpenStreetMap for validation.
+
+Interactive Visualization
+
+Functionality:
+Visualizes real-time hurricane data, predicted paths, and evacuation routes using Plotly/Dash or OpenLayers.
+Allows users to interact with the map.
+Verification:
+Tested responsiveness across devices (desktop, tablet, and mobile).
+Ensured correct rendering of paths and points.
+
+User Input for Evacuation Planning
+
+Functionality:
+Accepts user input through current location and provides tailored evacuation plans.
+Generates downloadable plans for offline access.
+Verification:
+Simulated various user locations and verified the evacuation plans generated.
+Checked for edge cases such as invalid inputs or unreachable destinations.
+
+Alerts and Notifications
+
+Functionality:
+Sends real-time alerts via email or SMS for critical updates.
+Notifies users about route changes or worsening hurricane conditions.
+Verification:
+Used test email and SMS accounts to verify timely delivery of alerts.
+Tested with different scenarios to ensure accurate notifications.
+
