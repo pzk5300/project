@@ -33,4 +33,105 @@ This project is also novel for its integration of these features, its prediction
 
 Installation and usage instructions
 
+The prerequisities required are Python 3.8, pip, Git, and an internet connection.
+
+You must first clone the repository by adding this command
+
+git clone https://github.com/username/hurricane-monitoring-system.git
+cd hurricane-monitoring-system
+
+Install the libraries with pip
+
+pip install -r requirements.txt
+
+Setting up the API keys to gather real time hurricane and geographgical data 
+
+HURRICANE_API_KEY=your_noaa_or_openweathermap_api_key
+MAP_API_KEY=your_openstreetmap_api_key
+
+Then run the application 
+
+python run.py
+
+Access the application through here 
+
+http://127.0.0.1:5000/
+
+Through the application, you can view live hurricane data and also see predicted paths and the intensity of the storms. You can also input your location and it will generate safe evacuation routes. 
+
+To test the application to ensure its functionality, you can input this command
+
+python -m unittest discover tests/
+
+Code structure
+
+project/
+│
+├── app/
+│   ├── __init__.py        
+│   ├── routes.py          
+│   ├── models.py          
+│   ├── utils.py           
+│   ├── templates/         
+│   └── static/           
+│
+├── data/
+│   ├── hurricane_data/    
+│   ├── maps/              
+│
+├── tests/
+│   ├── test_routes.py     
+│   ├── test_models.py     
+│   └── test_utils.py     
+│
+├── docs/
+│   ├── flowchart.png      
+│   └── project_report.pdf 
+│
+├── README.md              
+├── requirements.txt       
+├── run.py                 
+└── setup.py     
+
+Flow Chart
+
+   +--------------------+
+   |  Start Application |
+   +---------+----------+
+             |
+             v
+   +----------------------+
+   | Fetch Real-Time Data |
+   | (API Integration)    |
+   +---------+------------+
+             |
+             v
+   +-------------------------+
+   | Preprocess Data         |
+   | (Filter, Clean,         |
+   | & Extract Features)     |
+   +---------+---------------+
+             |
+             v
+   +---------------------------+
+   | Predict Hurricane Path    |
+   | (Machine Learning Model)  |
+   +---------+-----------------+
+             |
+             v
+   +-------------------------+
+   | Optimize Evacuation     |
+   | Routes (Graph Algorithm)|
+   +---------+---------------+
+             |
+             v
+   +---------------------------+
+   | Visualize Results         |
+   | (Interactive Dashboard)   |
+   +---------------------------+
+             |
+             v
+   +------------------+
+   | User Interaction |
+   +------------------+
 
