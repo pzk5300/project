@@ -191,3 +191,37 @@ Verification:
 Used test email and SMS accounts to verify timely delivery of alerts.
 Tested with different scenarios to ensure accurate notifications.
 
+Achievement of project goals
+
+Project Goals -
+
+Monitor Real-Time Hurricane Data:
+Accurately fetch and display current hurricane information.
+Predict Hurricane Paths:
+Use machine learning to forecast future hurricane trajectories.
+
+Optimize Evacuation Routes:
+Calculate safe and efficient evacuation routes.
+
+User-Friendly Interface:
+Provide an interactive and accessible tool for users.
+
+Execution Results
+
+Current Hurricane: Hurricane Zeta
+Location: Latitude: 25.0, Longitude: -75.0
+Wind Speed: 120 mph
+Category: 3
+Time Updated: 2024-12-04 14:00 UTC
+For visualization, a real-time map displayed the hurricane's current location and intensity using a color-coded system for different categories.
+The achievement we made here is by having real-time data fetched accurately and updated every 10 minutes, ensuring users are informed about the latest conditions, which satisfied our project goals.
+
+Discussions and Conclusions
+
+Project issues -
+Issues we ran into with the project is the availability of data. For some of the real time data sources, there is a subscription required. The accuracy of the application is also an issue because it is difficult for the program to predict and forecast over 48 hours. The limitations of the application include its predictability because it mainly accounts for historical data and future hurricanes can change due to the climate impact.
+
+Course learning applied -
+Throughout this project we used and applied what we learned from this course to include algorithms, basic data structure understanding, and how to install and run applications in python. 
+
+
