@@ -26,8 +26,8 @@ Visualize hurricane data and routes using tools like Plotly or Dash.
 Provide notifications and alerts for updates.
 
 Background Information
-Hurricanes are among the most devastating natural disasters, causing widespread destruction to infrastructure, loss of life, and disruption of communities. Their unpredictability and intensity make them a significant challenge for disaster management and relief efforts. Efficient hurricane tracking and evacuation planning are critical for minimizing damage and ensuring public safety.
-Existing solutions often focus on either monitoring hurricanes or providing evacuation routes, but few integrate these functionalities into a comprehensive system. Moreover, as urban areas grow and climate change contributes to more intense hurricanes, the need for innovative, efficient, and accessible solutions becomes even more pressing.
+Hurricanes are among the most devastating natural disasters, causing widespread destruction to infrastructure, loss of life, and disruption of communities. Their unpredictability and intensity make them a significant challenge for disaster management and relief efforts. Imrpoving hurricane tracking and evacuation planning are critical for minimizing damage and ensuring public safety.
+Existing solutions often focus on either monitoring hurricanes or providing evacuation routes, but few integrate these functionalities into a comprehensive system. Moreover, as urban areas grow and climate change contributes to more intense hurricanes, the need for innovative, efficient, and accessible solutions becomes more of a priority.
 This project is meaningful because of its real world impact through disaster management, hurricane monitoring, and safe evacuation planning.
 This project is also novel for its integration of these features, its prediction analysis, and its user-friendly accessibility.
 
