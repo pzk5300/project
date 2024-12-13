@@ -89,15 +89,6 @@ Calculate safe and efficient evacuation routes.
 User-Friendly Interface:
 Provide an interactive and accessible tool for users.
 
-Execution Results
-
-Current Hurricane: Hurricane Zeta
-Location: Latitude: 25.0, Longitude: -75.0
-Wind Speed: 120 mph
-Category: 3
-Time Updated: 2024-12-04 14:00 UTC
-For visualization, a real-time map displayed the hurricane's current location and intensity using a color-coded system for different categories.
-The achievement we made here is by having real-time data fetched accurately and updated every 10 minutes, ensuring users are informed about the latest conditions, which satisfied our project goals.
 
 Discussions and Conclusions
 
