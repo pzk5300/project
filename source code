@@ -14,113 +14,138 @@ project/
 
 from flask import Flask
 
-def create_app():
-    app = Flask(__name__)
-    app.config['SECRET_KEY'] = 'your_secret_key'
-    return app
+from collections import deque
+from heapq import heappush, heappop
 
-import requests
-import os
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
 
-def fetch_hurricane_data():
-    api_key = os.getenv('HURRICANE_API_KEY')
-    url = f"https://api.weather.gov/hurricanes?apikey={api_key}"
-    response = requests.get(url)
-    if response.status_code == 200:
-        return response.json()
-    else:
-        return {"error": "Unable to fetch data"}
+class LinkedList:
+    def __init__(self):
+        self.head = None
 
-import pandas as pd
-from sklearn.ensemble import RandomForestRegressor
+    def append(self, data):
+        new_node = Node(data)
+        if not self.head:
+            self.head = new_node
+        else:
+            current = self.head
+            while current.next:
+                current = current.next
+            current.next = new_node
 
-def predict_hurricane_path(current_data, historical_data_path="data/historical_data.csv"):
-    # Load historical data
-    data = pd.read_csv(historical_data_path)
-    features = ['latitude', 'longitude', 'wind_speed']
-    X_train = data[features]
-    y_train = data['next_latitude'], data['next_longitude']
-    
-    # Train model
-    model = RandomForestRegressor()
-    model.fit(X_train, y_train)
+    def display(self):
+        current = self.head
+        while current:
+            print(current.data, end=' -> ')
+            current = current.next
+        print("None")
 
-    # Predict next position
-    prediction = model.predict([[
-        current_data['latitude'],
-        current_data['longitude'],
-        current_data['wind_speed']
-    ]])
-    return prediction
+class Stack:
+    def __init__(self):
+        self.stack = []
 
-import networkx as nx
+    def push(self, item):
+        self.stack.append(item)
 
-def optimize_route(graph_data, start, end):
-    G = nx.Graph()
-    for edge in graph_data['edges']:
-        G.add_edge(edge['start'], edge['end'], weight=edge['distance'])
-    return nx.shortest_path(G, source=start, target=end, weight='weight')
+    def pop(self):
+        return self.stack.pop() if self.stack else None
 
-from flask import Blueprint, render_template, jsonify, request
-from .utils import fetch_hurricane_data, predict_hurricane_path, optimize_route
+    def peek(self):
+        return self.stack[-1] if self.stack else None
 
-main = Blueprint('main', __name__)
+class EvacuationQueue:
+    def __init__(self):
+        self.queue = deque()
 
-@main.route('/')
-def index():
-    return render_template('index.html')
+    def enqueue(self, route):
+        self.queue.append(route)
 
-@main.route('/hurricane', methods=['GET'])
-def hurricane_data():
-    data = fetch_hurricane_data()
-    return jsonify(data)
+    def dequeue(self):
+        return self.queue.popleft() if self.queue else None
 
-@main.route('/predict', methods=['POST'])
-def predict_path():
-    current_data = request.json
-    prediction = predict_hurricane_path(current_data)
-    return jsonify({"predicted_path": prediction})
+class MinHeap:
+    def __init__(self):
+        self.heap = []
 
-@main.route('/evacuate', methods=['POST'])
-def evacuate():
-    start = request.json['start']
-    end = request.json['end']
-    graph_data = {
-        "edges": [
-            {"start": "A", "end": "B", "distance": 10},
-            {"start": "B", "end": "C", "distance": 15},
-            {"start": "A", "end": "C", "distance": 20}
-        ]
-    }
-    route = optimize_route(graph_data, start, end)
-    return jsonify({"route": route})
+    def push(self, priority, task):
+        heappush(self.heap, (priority, task))
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hurricane Monitoring</title>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-</head>
-<body>
-    <h1>Hurricane Monitoring Dashboard</h1>
-    <div id="map"></div>
-    <script>
-        fetch('/hurricane')
-            .then(response => response.json())
-            .then(data => {
-                console.log(data); // Use Plotly to visualize the data
-            });
-    </script>
-</body>
-</html>
+    def pop(self):
+        return heappop(self.heap) if self.heap else None
 
-from app import create_app
-from app.routes import main
+class Graph:
+    def __init__(self):
+        self.adjacency_list = {}
 
-app = create_app()
-app.register_blueprint(main)
+    def add_edge(self, start, end):
+        if start not in self.adjacency_list:
+            self.adjacency_list[start] = []
+        if end not in self.adjacency_list:
+            self.adjacency_list[end] = []
+        self.adjacency_list[start].append(end)
+        self.adjacency_list[end].append(start)
 
-if __name__ == '__main__':
-    app.run(debug=True)
+    def display(self):
+        for node, neighbors in self.adjacency_list.items():
+            print(f"{node} -> {', '.join(neighbors)}")
+
+class HurricaneManagement:
+    def __init__(self):
+        self.event_log = LinkedList()
+        self.evacuation_routes = EvacuationQueue()
+        self.rescue_operations = MinHeap()
+        self.hurricane_path = Graph()
+
+    def log_event(self, event: str):
+        self.event_log.append(event)
+
+    def add_evacuation_route(self, route: str):
+        self.evacuation_routes.enqueue(route)
+
+    def add_rescue_operation(self, priority: int, task: str):
+        self.rescue_operations.push(priority, task)
+
+    def add_hurricane_path(self, start: str, end: str):
+        self.hurricane_path.add_edge(start, end)
+
+    def display_logs(self):
+        print("Hurricane Event Log:")
+        self.event_log.display()
+
+    def next_evacuation_route(self):
+        route = self.evacuation_routes.dequeue()
+        print(f"Next evacuation route: {route}")
+
+    def next_rescue_operation(self):
+        operation = self.rescue_operations.pop()
+        if operation:
+            print(f"Next rescue operation: Priority {operation[0]}, Task: {operation[1]}")
+        else:
+            print("No rescue operations available.")
+
+    def display_hurricane_path(self):
+        print("Hurricane Path:")
+        self.hurricane_path.display()
+
+if __name__ == "__main__":
+    system = HurricaneManagement()
+
+    system.log_event("Category 4 hurricane detected near Florida.")
+    system.log_event("Hurricane downgraded to Category 3.")
+
+    system.add_evacuation_route("Route A: Coastal to Inland")
+    system.add_evacuation_route("Route B: Northern Highway")
+
+    system.add_rescue_operation(1, "Deploy emergency supplies to Shelter A")
+    system.add_rescue_operation(2, "Evacuate residents from Zone C")
+
+    system.add_hurricane_path("Florida", "Georgia")
+    system.add_hurricane_path("Georgia", "South Carolina")
+
+    system.display_logs()
+    system.next_evacuation_route()
+    system.next_rescue_operation()
+    system.display_hurricane_path()
