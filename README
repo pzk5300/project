@@ -30,6 +30,29 @@ This project is also novel for its integration of these features, its prediction
 
 Installation and usage instructions
 
+First step is to call log_event to record the hurricane by using this command for an example
+
+system.log_event("Category 4 hurricane detected near Florida.")
+system.log_event("Hurricane downgraded to Category 3.")
+
+Then manage the evac routes by these commands
+
+system.add_evacuation_route("Route A: Coastal to Inland")
+system.add_evacuation_route("Route B: Northern Highway")
+
+system.next_evacuation_route()
+
+Then graph the hurricane paths and their connections with this command
+
+system.add_hurricane_path("Florida", "Georgia")
+system.add_hurricane_path("Georgia", "South Carolina")
+
+system.display_hurricane_path()
+
+Last step is to display the logs with this command
+
+system.display_logs()
+
 
 
 Code structure
