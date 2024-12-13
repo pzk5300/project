@@ -4,17 +4,14 @@ Project Goals
 Monitor real-time hurricane data (such as wind speed, trajectory, and category).
 Predict hurricane paths using data analysis and forecasting models.
 Optimize evacuation routes and highlight safe zones for affected populations.
-Provide users with a user-friendly interface for data visualization and decision-making.
 
 Key Features
 
 Hurricane Monitoring:
 Collect real-time data from public APIs like NOAA or OpenWeatherMap.
-Display live updates of hurricane location and intensity on a map.
 
 Path Prediction:
 Use historical data and machine learning models to forecast the hurricane’s path.
-Display forecasted paths on an interactive map.
 
 Evacuation Planning:
 
@@ -34,6 +31,7 @@ This project is also novel for its integration of these features, its prediction
 Installation and usage instructions
 
 
+
 Code structure
 
 Main Module
@@ -51,83 +49,8 @@ Main Module
 
 Flow Chart
 
-  HurricaneManagement
-    ├── LinkedList (Event Log)
-    │       ├── append(data)
-    │       ├── display()
-    │       └── Node
-    │           ├── data
-    │           └── next
-    ├── EvacuationQueue (Routes)
-    │       ├── enqueue(route)
-    │       └── dequeue()
-    ├── MinHeap (Rescue Ops)
-    │       ├── push(priority, task)
-    │       └── pop()
-    ├── Graph (Hurricane Path)
-    │       ├── add_edge(start, end)
-    │       └── display()
-    └── Stack 
-            ├── push(item)
-            ├── pop()
-            └── peek()
-
-   List of Functionalities
-
-Real-Time Hurricane Data Monitoring
-
-Functionality:
-Fetches real-time hurricane data from public APIs
-Displays current hurricane locations, wind speeds, and categories.
-Verification:
-Tested by comparing API responses with publicly available hurricane data.
-Verified that the data refreshes at specified intervals.
-
-Hurricane Path Prediction
-
-Functionality:
-Predicts the trajectory of hurricanes using a machine learning model trained on historical data.
-Displays forecasted paths on an interactive map.
-Verification:
-Tested model accuracy using historical data as test inputs.
-Achieved 85% accuracy in predicting path within a 50-kilometer range.
-
-Evacuation Route Optimization
-
-Functionality:
-Uses algorithms to calculate optimal evacuation routes.
-Factors in real-time traffic data and shelter locations.
-Verification:
-Simulated various starting points and destinations to ensure correctness.
-Compared generated routes with Google Maps and OpenStreetMap for validation.
-
-Interactive Visualization
-
-Functionality:
-Visualizes real-time hurricane data, predicted paths, and evacuation routes using Plotly/Dash or OpenLayers.
-Allows users to interact with the map.
-Verification:
-Tested responsiveness across devices (desktop, tablet, and mobile).
-Ensured correct rendering of paths and points.
-
-User Input for Evacuation Planning
-
-Functionality:
-Accepts user input through current location and provides tailored evacuation plans.
-Generates downloadable plans for offline access.
-Verification:
-Simulated various user locations and verified the evacuation plans generated.
-Checked for edge cases such as invalid inputs or unreachable destinations.
-
-Alerts and Notifications
-
-Functionality:
-Sends real-time alerts via email or SMS for critical updates.
-Notifies users about route changes or worsening hurricane conditions.
-Verification:
-Used test email and SMS accounts to verify timely delivery of alerts.
-Tested with different scenarios to ensure accurate notifications.
-
+    
+ 
 Achievement of project goals
 
 Project Goals -
@@ -159,6 +82,6 @@ Project issues -
 Issues we ran into with the project is the availability of data. For some of the real time data sources, there is a subscription required. The accuracy of the application is also an issue because it is difficult for the program to predict and forecast over 48 hours. The limitations of the application include its predictability because it mainly accounts for historical data and future hurricanes can change due to the climate impact.
 
 Course learning applied -
-Throughout this project we used and applied what we learned from this course to include algorithms, basic data structure understanding, and how to install and run applications in python. 
+Throughout this project we used and applied what we learned from this course to includ basic data structure understanding, and how to install and run applications in python. 
 
 
