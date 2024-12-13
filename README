@@ -95,45 +95,17 @@ project/
 
 Flow Chart
 
-   +--------------------+
-   |  Start Application |
-   +---------+----------+
-             |
-             v
-   +----------------------+
-   | Fetch Real-Time Data |
-   | (API Integration)    |
-   +---------+------------+
-             |
-             v
-   +-------------------------+
-   | Preprocess Data         |
-   | (Filter, Clean,         |
-   | & Extract Features)     |
-   +---------+---------------+
-             |
-             v
-   +---------------------------+
-   | Predict Hurricane Path    |
-   | (Machine Learning Model)  |
-   +---------+-----------------+
-             |
-             v
-   +-------------------------+
-   | Optimize Evacuation     |
-   | Routes (Graph Algorithm)|
-   +---------+---------------+
-             |
-             v
-   +---------------------------+
-   | Visualize Results         |
-   | (Interactive Dashboard)   |
-   +---------------------------+
-             |
-             v
-   +------------------+
-   | User Interaction |
-   +------------------+
+  HurricaneManagement
+    ├── LinkedList (Event Log)
+    │       └── Node
+    ├── EvacuationQueue (Routes)
+    │       └── deque
+    ├── MinHeap (Rescue Ops)
+    │       └── heapq
+    ├── Graph (Hurricane Path)
+    │       └── Adjacency List
+    └── Stack (Optional)
+
 
    List of Functionalities
 
